@@ -1,6 +1,6 @@
-<h1>Editing Notebook</h1>
+<h3>
+<span>Editing Notebook</span>
+<%= link_to  "View", @notebook, class: 'btn btn-outline-primary' %>
+</h3>
 
 <%= render 'form', notebook: @notebook %>
-
-<%= link_to 'Show', @notebook %> |
-<%= link_to 'Back', notebooks_path %>
