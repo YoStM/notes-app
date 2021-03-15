@@ -1,6 +1,6 @@
 class Notebook < ApplicationRecord
   belongs_to :user
-  has_many :pages
+  has_many :pages, dependent: :destroy
 
   def get_next_page_position
     if pages.none? { |page| page.persisted?}
