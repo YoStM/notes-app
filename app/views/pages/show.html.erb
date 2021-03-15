@@ -1,17 +1,8 @@
-<p>
-  <strong>Title:</strong>
+<h3 class='mb-5'>
   <%= @page.title %>
-</p>
+  <%= link_to 'Edit', edit_notebook_page_path(@notebook, @page), class: 'btn btn-sm btn-outline-primary ml-3' %>
+</h3>
 
-<p>
-  <strong>Position:</strong>
-  <%= @page.position %>
-</p>
-
-<p>
-  <strong>Notebook:</strong>
-  <%= @page.notebook_id %>
-</p>
-
-<%= link_to 'Edit', edit_notebook_page_path(@notebook, @page) %> |
-<%= link_to 'Back', @notebook %>
+<div class="my-5 text-right">
+<%= link_to 'Back', @notebook, class: 'btn btn-light' %>
+</div>

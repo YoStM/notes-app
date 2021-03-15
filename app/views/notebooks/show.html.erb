@@ -1,20 +1,13 @@
-<p>
-  <strong>Title:</strong>
+<h3 class='mb-5'>
   <%= @notebook.title %>
-</p>
+  <%= link_to 'Edit', edit_notebook_path(@notebook), class: 'btn btn-sm btn-outline-primary ml-3' %>
+</h3>
 
-<p>
-  <strong>User:</strong>
-  <%= @notebook.user_id %>
-</p>
 
-<%= link_to 'Edit', edit_notebook_path(@notebook) %> |
-<%= link_to 'Back', notebooks_path %>
-
-<h3 class="d-flex justify-content-between">
+<h5 class="d-flex justify-content-between">
 <span>Pages</span>
 <%= link_to  "New page", new_notebook_page_path(@notebook), class: 'btn btn-primary' %>
-</h3>
+</h5>
 
 <table class="table">
   <thead>
@@ -36,3 +29,7 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="my-5 text-right">
+<%= link_to 'Back', notebooks_path, class: 'btn btn-light' %>
+</div>

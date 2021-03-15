@@ -11,22 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field mb-3">
     <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :position %>
-    <%= form.text_field :position %>
-  </div>
-
-  <div class="field">
-    <%= form.label :notebook_id %>
-    <%= form.text_field :notebook_id %>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', @notebook, class: 'btn btn-secondary' %>
   </div>
 <% end %>

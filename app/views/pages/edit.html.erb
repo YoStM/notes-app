@@ -1,6 +1,6 @@
-<h1>Editing Page</h1>
+<h3>
+    <span>Editing Page</span>
+    <%= link_to 'Show', notebook_page_path(@notebook, @page), class: 'btn btn-sm btn-outline-primary ml-3' %>
+</h3>
 
 <%= render 'form', notebook: @notebook, page: @page %>
-
-<%= link_to 'Show', notebook_page_path(@notebook, @page) %> |
-<%= link_to 'Back', @notebook %>
