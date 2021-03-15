@@ -19,6 +19,8 @@ class PagesController < ApplicationController
   def create
     @page = @notebook.pages.build(page_params)
 
+    @page.position = @notebook.get_next_page_position
+
     if @page.save
       redirect_to notebook_page_path(@notebook, @page), notice: "Page was successfully created."
     else

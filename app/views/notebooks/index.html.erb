@@ -1,9 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="d-flex justify-content-between align-items-center mb-5">
+<h3 class='m-0'>Notebooks</h3>
+<div>
+<a href="<%= new_notebook_path %>" class="btn btn-sm btn-primary">
+<i class="bi bi-plus-square mr-1"></i>
+New notebook
+</a>
+</div>
+</div>
 
-<h3 class="d-flex justify-content-between">
-<span>Notebooks</span>
-<%= link_to  "New notebook", new_notebook_path, class: 'btn btn-primary' %>
-</h3>
+<div class="row mb-3">
+  <% @notebooks.each do |notebook| %>
+    <div class="col-md-4">
+      <div class="card mb-3 bg-light">
+        <div class="card-body">
+          <div class="card-title d-flex justify-content-between m-0">
+            <%= link_to notebook do %>
+            <h5><%= notebook.title %></h5>
+            <% end %>
+            <div>
+            <a href='<%= edit_notebook_path(notebook) %>' class='mr-3 text-secondary'><i class='bi bi-pencil-square'></i></a>
+            <a href='<%= notebook %>' data-method='delete' data-confirm='Are you sure?' class='text-danger ml-auto'><i class='bi bi-x-octagon'></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+
+
+
 
 <table class="table">
   <thead>
