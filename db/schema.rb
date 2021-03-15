@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_15_092437) do
+ActiveRecord::Schema.define(version: 2021_03_15_075842) do
 
   create_table "notebooks", force: :cascade do |t|
     t.string "title"
@@ -18,14 +18,6 @@ ActiveRecord::Schema.define(version: 2021_03_15_092437) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_notebooks_on_user_id"
-  end
-
-  create_table "pages", force: :cascade do |t|
-    t.string "title"
-    t.integer "positionnotebook_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["positionnotebook_id"], name: "index_pages_on_positionnotebook_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,5 +33,4 @@ ActiveRecord::Schema.define(version: 2021_03_15_092437) do
   end
 
   add_foreign_key "notebooks", "users"
-  add_foreign_key "pages", "positionnotebooks"
 end
