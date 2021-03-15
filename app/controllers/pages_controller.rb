@@ -1,10 +1,6 @@
 class PagesController < ApplicationController
+  before_action :set_notebook
   before_action :set_page, only: %i[ show edit update destroy ]
-
-  # GET /pages or /pages.json
-  def index
-    @pages = Page.all
-  end
 
   # GET /pages/1 or /pages/1.json
   def show
@@ -21,45 +17,38 @@ class PagesController < ApplicationController
 
   # POST /pages or /pages.json
   def create
-    @page = Page.new(page_params)
+    @page = @notebook.pages.build(page_params)
 
-    respond_to do |format|
-      if @page.save
-        format.html { redirect_to @page, notice: "Page was successfully created." }
-        format.json { render :show, status: :created, location: @page }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
+    if @page.save
+      redirect_to notebook_page_path(@notebook, @page), notice: "Page was successfully created."
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /pages/1 or /pages/1.json
   def update
-    respond_to do |format|
-      if @page.update(page_params)
-        format.html { redirect_to @page, notice: "Page was successfully updated." }
-        format.json { render :show, status: :ok, location: @page }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
+    if @page.update(page_params)
+      redirect_to notebook_page_path(@notebook, @page), notice: "Page was successfully created."
+    else
+      render :edit
     end
   end
 
   # DELETE /pages/1 or /pages/1.json
   def destroy
     @page.destroy
-    respond_to do |format|
-      format.html { redirect_to pages_url, notice: "Page was successfully destroyed." }
-      format.json { head :no_content }
-    end
+      redirect_to @notebook, notice: "Page was successfully destroyed."
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_notebook
+      @notebook = current_user.notebooks.find(params[:notebook_id])
+    end
+    # Scoping the page to the notebook
     def set_page
-      @page = Page.find(params[:id])
+      @page = @notebook.pages.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

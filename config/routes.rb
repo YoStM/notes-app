@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :pages
   resources :notebooks do
     resources :pages    
   end

@@ -1,6 +1,6 @@
 <h1>Editing Page</h1>
 
-<%= render 'form', page: @page %>
+<%= render 'form', notebook: @notebook, page: @page %>
 
-<%= link_to 'Show', @page %> |
-<%= link_to 'Back', pages_path %>
+<%= link_to 'Show', notebook_page_path(@notebook, @page) %> |
+<%= link_to 'Back', @notebook %>
