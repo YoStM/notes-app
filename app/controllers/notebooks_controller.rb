@@ -1,9 +1,11 @@
 class NotebooksController < ApplicationController
+  before_action :authenticate_user! # Redirect to root_path if user is not logged in
   before_action :set_notebook, only: %i[ show edit update destroy ]
 
   # GET /notebooks or /notebooks.json
   def index
-    @notebooks = Notebook.all
+    # Changed from Notebook.all to the following for security reason
+    @notebooks = current_user.notebooks
   end
 
   # GET /notebooks/1 or /notebooks/1.json
@@ -21,7 +23,7 @@ class NotebooksController < ApplicationController
 
   # POST /notebooks or /notebooks.json
   def create
-    @notebook = Notebook.new(notebook_params)
+    @notebook = current_user.notebooks.build(notebook_params)
 
     respond_to do |format|
       if @notebook.save
@@ -59,11 +61,14 @@ class NotebooksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_notebook
-      @notebook = Notebook.find(params[:id])
+      # changed from Notebooks.find(params:[id]) to the following for security reason
+      @notebook = current_user.notebooks.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def notebook_params
-      params.require(:notebook).permit(:title, :user_id)
+      # Removed second "permit" params for security reason, so that we can't access user_id from the URL
+      # Now we can't play aroudn anymore with the URL
+      params.require(:notebook).permit(:title)
     end
 end
