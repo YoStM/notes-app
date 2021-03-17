@@ -38,7 +38,7 @@ New notebook
 
 
 
-<table class="table">
+<%# <table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -47,13 +47,13 @@ New notebook
     </tr>
   </thead>
 
-  <tbody>
-    <% @notebooks.each do |notebook| %>
-      <tr>
-        <td><%= link_to notebook.title , notebook %></td>
-        <td><%= link_to 'Edit', edit_notebook_path(notebook) %></td>
-        <td><%= link_to 'Destroy', notebook, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <tbody> %>
+    <%# <% @notebooks.each do |notebook| %>
+      <%# <tr> %>
+        <%# <td><%= link_to notebook.title , notebook %><!--</td>-->
+        <%# <td><%= link_to 'Edit', edit_notebook_path(notebook) %><!--</td>-->
+        <%# <td><%= link_to 'Destroy', notebook, method: :delete, data: { confirm: 'Are you sure?' } %><!--</td>-->
+      <%# </tr> %>
+    <%# <% end %>
+  <%# </tbody>
+</table> %>
