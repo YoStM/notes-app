@@ -3,16 +3,27 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import * as ActiveStorage from "@rails/activestorage"
-import "channels"
+import Rails from "@rails/ujs";
+import Turbolinks from "turbolinks";
+import * as ActiveStorage from "@rails/activestorage";
+import "channels";
 
-import "../stylesheets/application.scss"
+import "../stylesheets/application.scss";
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
+Rails.start();
+Turbolinks.start();
+ActiveStorage.start();
 
-require("trix")
-require("@rails/actiontext")
+require("trix");
+require("@rails/actiontext");
+
+document.addEventListener('turbolinks:load', () => {
+    document.addEventListener('click', () => {
+        let element = event.target.closest('.text-content');
+        if (!element) return;
+
+        element.classList.add('d-none')
+        element.nextElementSibling.classList.remove('d-none');
+
+    })
+})

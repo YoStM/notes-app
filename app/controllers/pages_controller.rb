@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   # GET /pages/1 or /pages/1.json
   def show
     add_breadcrumb(@page.title)
+    @paragraph = @page.paragraphs.build
   end
 
   # GET /pages/new
