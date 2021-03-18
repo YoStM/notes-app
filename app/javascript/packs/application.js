@@ -21,9 +21,14 @@ document.addEventListener('turbolinks:load', () => {
     document.addEventListener('click', () => {
         let element = event.target.closest('.text-content');
         if (!element) return;
-
         element.classList.add('d-none')
         element.nextElementSibling.classList.remove('d-none');
+    })
 
+    document.addEventListener('click', () => {
+        if (!event.target.matches('.cancel')) return;
+        let element = event.target.closest('.form-content');
+        element.classList.add('d-none')
+        element.previousElementSibling.classList.remove('d-none');
     })
 })
