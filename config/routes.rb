@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   resources :paragraphs
   resources :notebooks do
-    resources :pages    
+    resources :pages do
+      resources :paragraphs
+    end
   end
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "home#index"
+  root to: 'home#index'
 end
